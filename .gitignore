@@ -1,3 +1,6 @@
 *.class
 *.log
 *checkpoint.ipynb
+*.v
+*.fir
+*.anno
