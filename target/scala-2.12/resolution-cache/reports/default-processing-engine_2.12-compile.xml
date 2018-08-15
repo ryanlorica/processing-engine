@@ -7,7 +7,7 @@
 		revision="0.1"
 		conf="compile"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20180814203510"/>
+		date="20180815103023"/>
 	<dependencies>
 		<module organisation="edu.berkeley.cs" name="chisel-iotesters_2.12">
 			<revision name="1.1.2" status="release" pubdate="20180205153037" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://chisel.eecs.berkeley.edu/" downloaded="false" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="21">

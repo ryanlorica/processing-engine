@@ -2,29 +2,33 @@ package pe
 
 import chisel3._
 
-class ALUConfig(val dataWidth: Int, val funcs: List[String]) {
+import hardfloat._
 
-  require(funcs.nonEmpty, "Must support at least one function.")
+// TODO: Replace strings with enums lol
+class ALUConfig(val dataWidth: Int, val funcs: List[String], dataType: String, expWidth: Int = 0, sigWidth: Int = 0) {
+
+  require(dataWidth == expWidth + sigWidth, "Datawidth must be the sum of Exponent Width and Signal Width. I'm keeping datawidth there just for backwards compat.\n")
+  require(funcs.nonEmpty, "Must support at least one function.\n")
   for(x <- funcs) {
-    require(List("Identity", "Add", "Max", "Accumulate").contains(x), "Unsupported function.")
+    require(List("Identity", "Add", "Max", "Accumulate").contains(x), "Unsupported function.\n")
   }
 
-  val idnSupp = funcs.contains("Identity")
-  val addSupp = funcs.contains("Add")
-  val maxSupp = funcs.contains("Max")
-  val accSupp = funcs.contains("Accumulate")
-  val addBypassIn = addSupp || maxSupp
+  val idnSupp: Boolean = funcs.contains("Identity")
+  val addSupp: Boolean = funcs.contains("Add")
+  val maxSupp: Boolean = funcs.contains("Max")
+  val accSupp: Boolean = funcs.contains("Accumulate")
+  val addBypassIn: Boolean = addSupp || maxSupp
 }
 
 class ALUFSel(c: ALUConfig) extends Bundle {
 
-  override def cloneType = (new ALUFSel(c)).asInstanceOf[this.type]
+  override def cloneType = new ALUFSel(c).asInstanceOf[this.type]
 
   // Priority is given from top to bottom
-  val idnEnable = if (c.idnSupp) Some(Bool()) else None
-  val addEnable = if (c.addSupp) Some(Bool()) else None
-  val maxEnable = if (c.maxSupp) Some(Bool()) else None
-  val accEnable = if (c.accSupp) Some(Bool()) else None
+  val idnEnable: Option[Bool] = if (c.idnSupp) Some(Bool()) else None
+  val addEnable: Option[Bool] = if (c.addSupp) Some(Bool()) else None
+  val maxEnable: Option[Bool] = if (c.maxSupp) Some(Bool()) else None
+  val accEnable: Option[Bool] = if (c.accSupp) Some(Bool()) else None
 }
 
 class ALU(c: ALUConfig) extends Module {
