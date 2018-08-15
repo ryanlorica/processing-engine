@@ -2,8 +2,6 @@ package pe
 
 import chisel3._
 
-import hardfloat._
-
 // TODO: Replace strings with enums lol
 class ALUConfig(val dataWidth: Int, val funcs: List[String], dataType: String, expWidth: Int = 0, sigWidth: Int = 0) {
 

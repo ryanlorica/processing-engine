@@ -4,7 +4,7 @@
 		module="processing-engine$sources"
 		revision="0.1"
 		status="integration"
-		publication="20180815103111"
+		publication="20180815121918"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>

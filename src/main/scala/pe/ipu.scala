@@ -3,8 +3,6 @@ package pe
 import chisel3._
 import chisel3.util.PriorityMux
 
-import hardfloat._
-
 class IPUConfig(val width: Int, val inBitWidth: Int, val outBitWidth: Int, val bpType: String, val dataType: String, val expWidth: Int = 0, val sigWidth: Int = 0) {
 
   require(inBitWidth == expWidth + sigWidth, "InBitWidth must be the sum of Exponent Width and Signal Width. I'm keeping datawidth there just for backwards compat.\n")
@@ -26,6 +24,7 @@ class IPUOutput(outBitWidth: Int, bp: Boolean) extends Bundle {
 }
 
 
+//noinspection TypeAnnotation
 class IPU(c: IPUConfig) extends Module {
 
   val io = IO(new Bundle {
@@ -35,6 +34,22 @@ class IPU(c: IPUConfig) extends Module {
     val out = Output(new IPUOutput(c.outBitWidth, c.bpFirm))
   })
 
+  private class FPMult(dataType: String) extends BlackBox {
+    val io = IO(new Bundle {
+      val in1 = Input(SInt(c.inBitWidth.W))
+      val in2 = Input(SInt(c.inBitWidth.W))
+      val out = Output(SInt(c.outBitWidth.W))
+    })
+  }
+
+  private class FPAdd(dataType: String) extends BlackBox {
+    val io = IO(new Bundle {
+      val in1 = Input(SInt(c.inBitWidth.W))
+      val in2 = Input(SInt(c.inBitWidth.W))
+      val out = Output(SInt(c.outBitWidth.W))
+    })
+  }
+
   private class PMult extends Module {
     val io = IO(new Bundle {
       val weightVec = Input(Vec(c.width, SInt(c.inBitWidth.W)))
@@ -42,15 +57,17 @@ class IPU(c: IPUConfig) extends Module {
       val pairwiseProd = Output(Vec(c.width, SInt(c.outBitWidth.W)))
     })
     if (c.dataType == "Int") {
-      io.pairwiseProd := (io.weightVec zip io.actvtnVec).map { case (a, b) => a * b }
+      io.pairwiseProd := VecInit((io.weightVec zip io.actvtnVec).map { case (a, b) => a * b })
     } else {
-      (io.weightVec zip io.actvtnVec).foreach {
+      io.pairwiseProd := VecInit((io.weightVec zip io.actvtnVec).map {
         case (a, b) =>
-          val fpMult = Module(new ValExec_MulAddRecFN_mul(c.expWidth, c.sigWidth))
-          fpMult.io.a := a
-          fpMult.io.b := b
-          io.pairwiseProd := fpMult.io.actual.out
-      }
+          val fpMult = Module(new FPMult(c.dataType))
+          fpMult.io.in1 := a
+          fpMult.io.in2 := b
+          val out = Wire(SInt(c.outBitWidth.W))
+          out := fpMult.io.out
+          out
+      })
     }
   }
 
@@ -75,10 +92,10 @@ class IPU(c: IPUConfig) extends Module {
 
     private val fpAdd = (a: SInt, b: SInt) => {
       val ret = Wire(SInt(c.outBitWidth))
-      val fpAddMod = Module(new ValExec_MulAddRecFN_add(c.expWidth, c.sigWidth))
-      fpAddMod.io.a := a
-      fpAddMod.io.b := b
-      ret := fpAddMod.io.actual.out
+      val fpAddMod = chisel3.core.Module(new FPAdd(c.dataType))
+      fpAddMod.io.in1 := a
+      fpAddMod.io.in2 := b
+      ret := fpAddMod.io.out
       ret
     }
 
@@ -89,11 +106,11 @@ class IPU(c: IPUConfig) extends Module {
     }
   }
 
-  private val pMult = Module(new PMult)
+  private val pMult = chisel3.core.Module(new PMult)
   pMult.io.weightVec := io.weightIn
   pMult.io.actvtnVec := io.actvtnIn
 
-  private val sumTree = Module(new SumTree)
+  private val sumTree = chisel3.core.Module(new SumTree)
   sumTree.io.inVec := pMult.io.pairwiseProd
 
   io.out.innerProd := sumTree.io.sum
