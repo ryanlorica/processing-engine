@@ -1,7 +1,3 @@
-
-val path = System.getProperty("user.dir") + "/source/load-ivy.sc"
-interp.load.module(ammonite.ops.Path(java.nio.file.FileSystems.getDefault().getPath(path)))
-
 import chisel3._
 import chisel3.util._
 import chisel3.iotesters.{ChiselFlatSpec, Driver, PeekPokeTester}
@@ -204,8 +200,8 @@ class IPU(c: IPUConfig) extends Module {
     io.out.innerProd := sumTree.io.sum
 
     if (c.bpFirm) {
-        io.out.bpWeight.get := PriorityMux(io.bpSel.get, io.weightIn)
-        io.out.bpActvtn.get := PriorityMux(io.bpSel.get, io.actvtnIn)
+    io.out.bpWeight.get := PriorityMux(io.bpSel.get, io.weightIn)
+    io.out.bpActvtn.get := PriorityMux(io.bpSel.get, io.actvtnIn)
     }
 }
 

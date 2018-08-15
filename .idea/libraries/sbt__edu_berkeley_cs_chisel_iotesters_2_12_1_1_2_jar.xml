@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: edu.berkeley.cs:chisel-iotesters_2.12:1.1.2:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/edu.berkeley.cs/chisel-iotesters_2.12/jars/chisel-iotesters_2.12-1.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/edu.berkeley.cs/chisel-iotesters_2.12/srcs/chisel-iotesters_2.12-1.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

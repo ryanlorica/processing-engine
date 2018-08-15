@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: edu.berkeley.cs:chisel3_2.12:3.0.2:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/edu.berkeley.cs/chisel3_2.12/jars/chisel3_2.12-3.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/edu.berkeley.cs/chisel3_2.12/srcs/chisel3_2.12-3.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
