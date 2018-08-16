@@ -12,7 +12,7 @@ class FPMult(dataType: String) extends Module {
     case _ => 15 // BF16
   }
 
-  private class ValExec_MulAddRecF16_mul(dataType: String) extends BlackBox with HasBlackBoxResource {
+  private class ValExec_MulAddRecF16_mul(dataType: String) extends BlackBox {
     val io = IO(new Bundle {
       val a = Input(SInt(bitWidth.W))
       val b = Input(SInt(bitWidth.W))
@@ -26,12 +26,6 @@ class FPMult(dataType: String) extends Module {
       val check = Output(Bool())
       val pass = Output(Bool())
     })
-    dataType match {
-      case "FP16" => setResource("/verilog/ValExec_MulAddRecF16_mul.v")
-      case "FP32" => setResource("/verilog/ValExec_MulAddRecF32_mul.v")
-      case "FP64" => setResource("/verilog/ValExec_MulAddRecF64_mul.v")
-      case _ => setResource("/verilog/ValExec_MulAddRecBF16_mul.v")
-    }
   }
 
   val io = IO(new Bundle {
@@ -55,7 +49,7 @@ class FPAdd(dataType: String) extends Module {
     case _ => 15
   }
 
-  private class HardfloatAdd(dataType: String) extends BlackBox with HasBlackBoxResource {
+  private class HardfloatAdd(dataType: String) extends BlackBox{
     val io = IO(new Bundle {
       val io_a = Input(SInt(bitWidth.W))
       val io_b = Input(SInt(bitWidth.W))
@@ -69,12 +63,6 @@ class FPAdd(dataType: String) extends Module {
       val io_check = Output(Bool())
       val io_pass = Output(Bool())
     })
-    dataType match {
-      case "FP16" => setResource("/verilog/ValExec_MulAddRecF16_add.v")
-      case "FP32" => setResource("/verilog/ValExec_MulAddRecF32_add.v")
-      case "FP64" => setResource("/verilog/ValExec_MulAddRecF64_add.v")
-      case _ => setResource("/verilog/ValExec_MulAddRecBF16_add.v")
-    }
   }
 
   val io = IO(new Bundle {

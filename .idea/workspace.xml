@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6893ce29-e1dc-4011-ba54-06a63b3f5a17" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/RyanL.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/fpSupport.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/processing-engine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/processing-engine.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/nPE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/custom.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/load-ivy.sc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/ipu.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/pe/ipu.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/PEInstanceTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/PEInstanceTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/fpSupport.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/pe/fpSupport.scala" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -95,7 +87,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/pe/ipu.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
+            <state relative-caret-position="-3">
               <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
               <folding>
                 <element signature="e#12#28#0" expanded="true" />
@@ -107,8 +99,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/pe/fpSupport.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+            <state relative-caret-position="255">
+              <caret line="52" column="28" lean-forward="true" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
               <folding>
                 <element signature="e#12#28#0" expanded="true" />
               </folding>
@@ -119,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/verilog/ValExec_MulAddRecF16_mul.v">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="1501" column="21" lean-forward="true" selection-start-line="1501" selection-start-column="21" selection-end-line="1501" selection-end-column="21" />
+            <state relative-caret-position="10423">
+              <caret line="2108" column="9" selection-start-line="2108" selection-start-column="3" selection-end-line="2108" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -237,7 +229,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534379083802" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534380696632" />
     <property name="last_opened_file_path" value="$USER_HOME$/.ivy2/local/edu.berkeley.cs/chisel_2.11/2.3-SNAPSHOT/jars/chisel_2.11.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -394,7 +386,7 @@
     <frame x="-6" y="-6" width="1549" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25285044" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25285044" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -403,7 +395,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3297587" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3297587" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -594,16 +586,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/verilog/ValExec_MulAddRecF16_mul.v">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="1501" column="21" lean-forward="true" selection-start-line="1501" selection-start-column="21" selection-end-line="1501" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/pe/ipu.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
+        <state relative-caret-position="-3">
           <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
           <folding>
             <element signature="e#12#28#0" expanded="true" />
@@ -611,10 +596,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/verilog/ValExec_MulAddRecF16_mul.v">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10423">
+          <caret line="2108" column="9" selection-start-line="2108" selection-start-column="3" selection-end-line="2108" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/pe/fpSupport.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        <state relative-caret-position="255">
+          <caret line="52" column="28" lean-forward="true" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
           <folding>
             <element signature="e#12#28#0" expanded="true" />
           </folding>
