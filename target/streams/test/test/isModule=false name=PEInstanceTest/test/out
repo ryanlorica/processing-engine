@@ -1,0 +1,26 @@
+[0m[[0m[0minfo[0m] [0m[0m[32mPEInstanceTest:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31mPEInstanceTest *** ABORTED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  java.lang.NoClassDefFoundError: Chisel/Module[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.lang.ClassLoader.defineClass1(Native Method)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.lang.ClassLoader.defineClass(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.security.SecureClassLoader.defineClass(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.net.URLClassLoader.defineClass(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.net.URLClassLoader.access$100(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.net.URLClassLoader$1.run(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.net.URLClassLoader$1.run(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.security.AccessController.doPrivileged(Native Method)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.net.URLClassLoader.findClass(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.lang.ClassLoader.loadClass(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  Cause: java.lang.ClassNotFoundException: Chisel.Module[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.net.URLClassLoader.findClass(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.lang.ClassLoader.loadClass(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.lang.ClassLoader.loadClass(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.lang.ClassLoader.defineClass1(Native Method)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.lang.ClassLoader.defineClass(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.security.SecureClassLoader.defineClass(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.net.URLClassLoader.defineClass(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.net.URLClassLoader.access$100(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.net.URLClassLoader$1.run(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.net.URLClassLoader$1.run(Unknown Source)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m

@@ -1,11 +1,14 @@
 package pe
 
 import chisel3._
-import chisel3.util.PriorityMux
+import chisel3.util.{HasBlackBoxResource, PriorityMux}
+import chisel3.experimental._
 
-class IPUConfig(val width: Int, val inBitWidth: Int, val outBitWidth: Int, val bpType: String, val dataType: String, val expWidth: Int = 0, val sigWidth: Int = 0) {
+class IPUConfig(val width: Int, val inBitWidth: Int, val outBitWidth: Int, val bpType: String, val dataType: String) {
 
-  require(inBitWidth == expWidth + sigWidth, "InBitWidth must be the sum of Exponent Width and Signal Width. I'm keeping datawidth there just for backwards compat.\n")
+  private val binPow = List(1, 2, 4, 8, 16, 32, 64)
+
+  require(binPow.contains(inBitWidth) && binPow.contains(outBitWidth))
   require(width >= 1, "Width must be at least one.\n")
   require(List("None", "Firm").contains(bpType), "Bypass must be \"None\" or \"Firm\".\n")
   require(inBitWidth > 0 && outBitWidth > 0, "Data bitwidth must be greater than 0\n")
@@ -33,22 +36,6 @@ class IPU(c: IPUConfig) extends Module {
     val actvtnIn = Input(Vec(c.width, SInt(c.inBitWidth.W)))
     val out = Output(new IPUOutput(c.outBitWidth, c.bpFirm))
   })
-
-  private class FPMult(dataType: String) extends BlackBox {
-    val io = IO(new Bundle {
-      val in1 = Input(SInt(c.inBitWidth.W))
-      val in2 = Input(SInt(c.inBitWidth.W))
-      val out = Output(SInt(c.outBitWidth.W))
-    })
-  }
-
-  private class FPAdd(dataType: String) extends BlackBox {
-    val io = IO(new Bundle {
-      val in1 = Input(SInt(c.inBitWidth.W))
-      val in2 = Input(SInt(c.inBitWidth.W))
-      val out = Output(SInt(c.outBitWidth.W))
-    })
-  }
 
   private class PMult extends Module {
     val io = IO(new Bundle {
@@ -80,18 +67,17 @@ class IPU(c: IPUConfig) extends Module {
     // Recursively creates a balanced syntax tree
     private def adjReduce[A](xs: List[A], op: (A, A) => A): A = xs match {
       case List(single) => single
-      case default => {
+      case default =>
         val grouped = default.grouped(2).toList
         val result = for (g <- grouped) yield { g match {
           case List(a, b) => op(a, b)
           case List(x) => x
         }}
         adjReduce(result, op)
-      }
     }
 
     private val fpAdd = (a: SInt, b: SInt) => {
-      val ret = Wire(SInt(c.outBitWidth))
+      val ret = Wire(SInt(c.outBitWidth.W))
       val fpAddMod = chisel3.core.Module(new FPAdd(c.dataType))
       fpAddMod.io.in1 := a
       fpAddMod.io.in2 := b

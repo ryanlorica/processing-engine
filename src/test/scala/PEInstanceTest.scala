@@ -27,6 +27,14 @@ class PEInstanceTest extends FunSuite {
         ctrl.internal.get.rAddr.get(0) := DontCare
       }
 
+      when (state >= 1.U && state <= 9.U) {
+        ctrl.internal.get.rEnable(1) := true.B
+        ctrl.internal.get.rAddr.get(1) := (state - 1.U) % 3.U
+      } .otherwise {
+        ctrl.internal.get.rEnable(1) := false.B
+        ctrl.internal.get.rAddr.get(1) := DontCare
+      }
+
       ctrl
     }
 
@@ -48,6 +56,14 @@ class PEInstanceTest extends FunSuite {
       } .otherwise {
         ctrl.internal.get.rEnable(0) := false.B
         ctrl.internal.get.rAddr.get(0) := DontCare
+      }
+
+      when (state >= 1.U && state <= 9.U) {
+        ctrl.internal.get.rEnable(1) := true.B
+        ctrl.internal.get.rAddr.get(1) := (state - 1.U) % 3.U
+      } .otherwise {
+        ctrl.internal.get.rEnable(1) := false.B
+        ctrl.internal.get.rAddr.get(1) := DontCare
       }
 
       ctrl
@@ -134,10 +150,10 @@ class PEInstanceTest extends FunSuite {
     }
 
     val rsPEConfig = new PEConfig(
-      new RFConfig(0, 1, 1, 0, 4, 16, "None"),
-      new RFConfig(0, 1, 1, 0, 4, 16, "None"),
+      new RFConfig(0, 1, 2, 0, 4, 16, "None"),
+      new RFConfig(0, 1, 2, 0, 4, 16, "None"),
       new RFConfig(1, 0, 1, 0, 4, 16, "None"),
-      new IPUConfig(1, 16, 16, "None", dataType  = "Int", expWidth = 8, sigWidth = 8),
+      new IPUConfig(2, 16, 16, "None", dataType  = "FP16"),
       new ALUConfig(8, List("Identity", "Accumulate"), dataType = "Int", expWidth = 4, sigWidth = 4),
       new NLUConfig(8, 8, List("Identity")),
       smWidth = 4,
